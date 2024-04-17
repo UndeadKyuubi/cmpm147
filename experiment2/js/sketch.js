@@ -33,24 +33,24 @@ function draw() {
   let skyColorBottom = color(254, 165, 0);
   let horizonColor = color(46, 104, 118);
   
-  let horizon = (height / 2) + 40;
+  let horizon = (canvasContainer.height() / 2) + 40;
   
   noFill();
-  for (let i = 0; i <= height; i++) {
-    let inter = map(i, 0, height, 0, 1);
+  for (let i = 0; i <= canvasContainer.height(); i++) {
+    let inter = map(i, 0, canvasContainer.height(), 0, 1);
     let c = lerpColor(skyColorTop, skyColorBottom, inter);
     stroke(c);
-    line(0, i, width, i);
+    line(0, i, canvasContainer.width(), i);
   }
   
   fill(horizonColor);
-  rect(0, horizon, width, height - horizon);
+  rect(0, horizon, canvasContainer.width(), canvasContainer.height() - horizon);
 
   // Water
   noFill();
-  for (let y = horizon+5; y < height; y += 3) {
+  for (let y = horizon+5; y < canvasContainer.height(); y += 3) {
     beginShape();
-    for (let x = 0; x < width; x += 1) {
+    for (let x = 0; x < canvasContainer.width(); x += 1) {
       let noiseVal = 0;
       
       noiseVal += 0.4 * noise(x * 0.01, (y + frameCount * 0.05) * 0.01);
@@ -73,8 +73,8 @@ function draw() {
   let sunSize = 2;
   let sunColor = color(255, 255, 0);
   let sunGlowColor = color(255, 255, 0, 50);
-  let sunX = width / 2;
-  let sunY = height * 0.3;
+  let sunX = canvasContainer.width() / 2;
+  let sunY = canvasContainer.height() * 0.3;
   
   for (let i = 0; i < 10; i++) {
     let glowSize = sunSize * 2 + i * 10;
@@ -88,11 +88,11 @@ function draw() {
   // Reflections
   let reflectionWidth = 100;
   let reflectionColor = color(100, 165, 165, 100);
-  let reflectionStart = createVector(width / 2 - reflectionWidth / 2, horizon);
+  let reflectionStart = createVector(canvasContainer.width() / 2 - reflectionWidth / 2, horizon);
   
   noFill();
-  for (let i = reflectionStart.y; i <= reflectionStart.y + (height - horizon); i++) {
-    let inter = map(i, reflectionStart.y, reflectionStart.y + height, 0, 1);
+  for (let i = reflectionStart.y; i <= reflectionStart.y + (canvasContainer.height() - horizon); i++) {
+    let inter = map(i, reflectionStart.y, reflectionStart.y + canvasContainer.height(), 0, 1);
     let c = lerpColor(reflectionColor, color(0,0), inter);
     stroke(c);
     line(reflectionStart.x, i, reflectionStart.x + reflectionWidth, i);
@@ -100,11 +100,11 @@ function draw() {
   
   reflectionWidth = 300;
   reflectionColor = color(100, 140, 140, 100);
-  reflectionStart = createVector(width / 2 - reflectionWidth / 2, horizon);
+  reflectionStart = createVector(canvasContainer.width() / 2 - reflectionWidth / 2, horizon);
   
   noFill();
-  for (let i = reflectionStart.y; i <= reflectionStart.y + (height - horizon); i++) {
-    let inter = map(i, reflectionStart.y, reflectionStart.y + height, 0, 1);
+  for (let i = reflectionStart.y; i <= reflectionStart.y + (canvasContainer.height() - horizon); i++) {
+    let inter = map(i, reflectionStart.y, reflectionStart.y + canvasContainer.height(), 0, 1);
     let c = lerpColor(reflectionColor, color(0,0), inter);
     stroke(c);
     line(reflectionStart.x, i, reflectionStart.x + reflectionWidth, i);
@@ -113,8 +113,8 @@ function draw() {
   // Clouds
   noStroke();
   for (let i = 0; i < 7; i++) {
-    let x = random(100, width - 25);
-    let y = random(50, height / 2);
+    let x = random(100, canvasContainer.width() - 25);
+    let y = random(50, canvasContainer.height() / 2);
     let size = random(50, 200);
     let cloudColor = lerpColor(color(255, 200), color(200, 200), random(1));
     fill(cloudColor);

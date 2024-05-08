@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- This title is used for tabs and bookmarks -->
+	<title>Experiment 5 - Evolutionary Impressions</title>
+
+	<!-- Use UTF character set, a good idea with any webpage -->
+	<meta charset="UTF-8" />
+	<!-- Set viewport so page remains consistently scaled w narrow devices -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- Include CSS file, including a site-wide CSS and for this particular page -->
+	<link rel="stylesheet" type="text/css" href="../css/site.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- Load jQuery library -->
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+	<!-- Load p5.js library -->
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
+
+	<!-- Link to javascript files - DEFER waits until all elements are rendered -->
+    <script type="text/javascript" src="../js/site.js" DEFER></script>
+	<!-- Use me for a JavaScript OOP Project -->
+	<script type="text/javascript" src="./js/project.js" DEFER></script>
+	<!-- Use me for a p5.js project -->
+	<script type="text/javascript" src="./js/sketch.js" DEFER></script>
+</head>
+<body>
+	<!-- Style this page by changing the CSS in ../css/site.css or css/experiment.css -->
+	<main id="content">
+		<section>
+
+			<h1>Experiment 5 - Evolutionary Impressions</h1>
+
+			<div class="minor-section">
+				<div id="canvas-container">
+					<!-- canvas will be added here -->
+				</div>
+                <div class="fullscreen-box">
+                    <button id="fullscreen">Fullscreen</button>
+                </div>
+				<select id="dropper"></select>
+				<button id="restart">
+				restart
+				</button>
+				<p>
+				Mutation rate (<span id="rate"></span>%):<br /><input
+					id="slider"
+					type="range"
+					min="1"
+					max="100"
+					value="100"
+				/>
+				</p>
+				<p id="active"></p>
+				<p>Active score: <span id="activeScore"></span></p>
+				<p>Exploration rate: <span id="fpsCounter"></span> fps</p>
+				<p id="best"></p>
+				<p>Best score: <span id="bestScore"></span></p>
+				<p id="memory" data-max-items="16"></p>
+			</div>
+
+			<div class="minor-section">
+				<h2>Description</h2>
+				<p>Loads images and generates paramaterized versions of them using primitive shapes like rects, ellipses, and triangles.</p>
+			</div>
+
+			<div class="minor-section">
+				<h2>Technical</h2>
+				<p>It works by loading the image and creating a bunch of random primitive shapes, then I get the color of the pixel at each point in the image and use that to properly color the shapes. Adjusting the mutation rate changes how much the shapes are allowed to randomize.</p>
+			</div>
+
+			<div class="minor-section">
+				<h2>Reflection</h2>
+				<p>I worked by myself on this experiment. If I am being honest, this is by far my weakest experiment. Nothing I tried really worked out in the long run and I ended up scrapping a lot of stuff, leaving me with rather disheartening results. The generated images don't really capture the likeness of the originals all that much, out of the 3, the tree image rendered with rects is the best. The high of this experiment was just getting the different shapes to render the image and figuring out how to get the color of the pixels on the image. It was also nice when the tree image turned out somewhat okay. The lows were pretty much everything else though and I am very disappointed in the final product.</p>
+			</div>
+
+		</section>
+		<nav id="links" class="minor-section">
+			<!-- Put link back to homepage here. -->
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+            </ul>
+		</nav>
+	</main>
+</body>
+</html>
